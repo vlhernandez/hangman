@@ -105,6 +105,46 @@ button {
   left: 28px;
 }
 
+#lt-eye1 {
+  width: 2px;
+  background: red;
+  height: 10px;
+  transform: rotate(37deg);
+  position: absolute;
+  top: 15px;
+  left: 45px;
+}
+
+#lt-eye2 {
+  width: 2px;
+  background: red;
+  height: 10px;
+  transform: rotate(-50deg);
+  position: absolute;
+  top: 15px;
+  left: 45px;
+}
+
+#rt-eye1 {
+  width: 2px;
+  background: red;
+  height: 10px;
+  transform: rotate(25deg);
+  position: absolute;
+  top: 13px;
+  left: 60px;
+}
+
+#rt-eye2 {
+  width: 2px;
+  background: red;
+  height: 10px;
+  transform: rotate(-60deg);
+  position: absolute;
+  top: 13px;
+  left: 60px;
+}
+
 #body {
   height: 75px;
   width: 4px;
@@ -152,4 +192,8 @@ button {
     position: absolute;
     right: 35px;
     top: 110px
+}
+
+.key:hover {
+  background: pink;
 }

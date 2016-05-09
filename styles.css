@@ -1,0 +1,155 @@
+h1 {
+  text-align: center;
+}
+
+#word {
+  display: flex;
+  justify-content: center;
+  margin-top: 2em;
+}
+
+#frame {
+  border: red solid 1px;
+  width:85%;
+  height: 320px;
+  position: relative;
+  margin: 0 auto;
+}
+
+#top-bar {
+  width: 80px;
+  height: 4px;
+  background: black;
+  position: absolute;
+  left: 450px;
+  top: 50px;
+}
+
+#noose {
+  width: 4px;
+  height: 20px;
+  background: black;
+  position: absolute;
+  top: 50px;
+  left: 530px;
+}
+
+#pole {
+  width: 4px;
+  height: 200px;
+  background: black;
+  position: absolute;
+  top: 50px;
+  left: 450px;
+}
+
+#base {
+  width: 100px;
+  height: 4px;
+  background: black;
+  position: absolute;
+  left: 405px;
+  top: 250px;
+}
+
+.letter {
+  margin: .5em;
+  border-bottom: blue solid 1px;
+  box-sizing: border-box;
+  width: 1.5em;
+  text-align: center;
+}
+
+button {
+  margin-top: 4em;
+}
+
+
+#letters {
+  display: flex;
+  flex-direction: column;
+}
+
+.row1,
+.row2,
+.row3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.row1 p,
+.row2 p,
+.row3 p {
+  padding: 1em;
+  margin-right: .5em;
+  text-align: center;
+  background: linen;
+  border-radius: 4px;
+}
+
+#man {
+   position: relative;
+   height: 200px;
+   width: 100px;
+   left: 480px;
+   top: 70px;
+}
+
+#head {
+  border-radius: 100%;
+  border: solid 4px black;
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  left: 28px;
+}
+
+#body {
+  height: 75px;
+  width: 4px;
+  background: black;
+  position: absolute;
+  left: 50px;
+  top: 44px;
+}
+
+#lt-arm {
+    width: 4px;
+    height: 45px;
+    background: black;
+    transform: rotate(-60deg);
+    position: absolute;
+    left: 30px;
+    top: 30px;
+}
+
+#rt-arm {
+    width: 4px;
+    height: 45px;
+    background: black;
+    transform: rotate(55deg);
+    position: absolute;
+    left: 67px;
+    top: 30px;
+}
+
+#lt-leg {
+    width: 4px;
+    height: 45px;
+    background: black;
+    transform: rotate(30deg);
+    position: absolute;
+    left: 39px;
+    top: 110px
+}
+
+#rt-leg {
+    width: 4px;
+    height: 45px;
+    background: black;
+    transform: rotate(-30deg);
+    position: absolute;
+    right: 35px;
+    top: 110px
+}

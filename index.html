@@ -2,12 +2,67 @@
 <html>
   <head>
     <meta charset="utf-8"/>
+    <link href="styles.css" rel="stylesheet" type="text/css" />
     <title>Hangman Game</title>
   </head>
 
   <body>
+
     <h1>Hangman</h1>
+
+    <div id="letters">
+      <div class="row1">
+        <p>q</p>
+        <p>w</p>
+        <p>e</p>
+        <p>r</p>
+        <p>t</p>
+        <p>y</p>
+        <p>u</p>
+        <p>i</p>
+        <p>o</p>
+        <p>p</p>
+      </div>
+      <div class="row2">
+        <p>a</p>
+        <p>s</p>
+        <p>d</p>
+        <p>f</p>
+        <p>g</p>
+        <p>h</p>
+        <p>j</p>
+        <p>k</p>
+        <p>l</p>
+      </div>
+      <div class="row3">
+        <p>z</p>
+        <p>x</p>
+        <p>c</p>
+        <p>v</p>
+        <p>b</p>
+        <p>n</p>
+        <p>m</p>
+      </div>
+    </div>
+    <div id="frame">
+        <div id="top-bar"></div>
+        <div id="noose"></div>
+        <div id="pole"></div>
+        <div id="base"></div>
+        
+      <div id="man">
+        <div id="head"></div>
+        <div id="body"></div>
+        <div id="lt-arm"></div>
+        <div id="rt-arm"></div>
+        <div id="lt-leg"></div>
+        <div id="rt-leg"></div>
+      </div>
+    </div>
+
+
     <div id="word"></div>
+
     <button>
       Click me for a random word!
     </button>

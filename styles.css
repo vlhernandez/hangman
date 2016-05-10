@@ -194,6 +194,7 @@ button {
     top: 110px
 }
 
-.key:hover {
+
+.enabled:hover {
   background: pink;
 }

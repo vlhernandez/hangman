@@ -1,6 +1,15 @@
 $( document ).ready(function() {
   var word = "";
   var wordObj = {};
+  var missedCnt = 0;
+  var man = {
+    0: "lt-leg",
+    1: "rt-leg",
+    2: "body",
+    3: "lt-arm",
+    4: "rt-arm",
+    5: "head"
+  };
 
   function getWord() {
     $.ajax({
@@ -18,7 +27,6 @@ $( document ).ready(function() {
         data.forEach(function(val, indx) {
           wordObj[indx] = {val, guessed: false};
         })
-        console.log("wordobj...", wordObj)
         $.each(data, function(idx, letter) {
           $("#word").append("<div idx="+idx+" class=letter></div>");
         })
@@ -29,40 +37,106 @@ $( document ).ready(function() {
     })
   }
 
+  /********************************
 
+   FETCH A WORD
+
+  *********************************/
   $("button").click(function( event ) {
-     console.log("Getting your word");
      getWord();
   });
 
+
+
+  /********************************
+
+    CONTROL KEYBOARD ENTRY BUTTONS
+    - determine which letter was clicked
+    - disable background color on hover
+    - disable ability to click again
+    - call function to check for letter in word
+
+  *********************************/
   $(".key").on("click", function( event ) {
-    var theLetterIs= $(this).html();
-    console.log("You clicked on: ",theLetterIs);
+    var guessIs= $(this).html();
+
     $(this).off(); //don't allow anymore clicks
     $(this).fadeTo("fast", 0.25);
     $(this).removeClass("enabled");
-    checkWord(theLetterIs);
+
+    checkWord(guessIs);
   });
 
 
+
+  /********************************
+
+    CHECK FOR GUESSED LETTER IN WORD
+    - if letter exists in word
+      - call function to reveal letters
+    - if letter does not exit in word
+       - call function to reveal a body part
+
+  *********************************/
   function checkWord(letter) {
-    console.log("in check word");
-    console.log("word object is...", wordObj);
+    var letterInWord = false;
     for (var key in wordObj) {
-      if (letter === wordObj[key].val) {
-        console.log("found that letter...", letter)
+      if ( letter === wordObj[key].val ) {
         wordObj[key].guessed = true;
-        findTheLetter(key, letter);
+        letterInWord = true;
+        revealLetter(key, letter);
       }
     }
-    console.log("word object is...", wordObj);
+    if ( !letterInWord ) {
+      revealBodyPart();
+    }
   }
 
-  function findTheLetter(indx, letter) {
+
+  /********************************
+
+    REVEAL CORRECT GUESSED LETTER
+
+  *********************************/
+  function revealLetter(indx, letter) {
     $("[idx='"+ indx +"']").html(letter);
   };
 
-  $("body").keypress(function(event) {
-    console.log("a key was pressed", event);
-  })
+
+  /********************************
+
+    REVEAL BODY PART
+
+  *********************************/
+  function revealBodyPart() {
+    var showPart = man[missedCnt];
+    if ( missedCnt === 6 ) {
+      console.log("game over")
+      gameOver();
+      return;
+    }
+
+    $("#"+showPart).removeClass("hidden");
+    missedCnt++;
+  }
+
+  /********************************
+
+    GAME OVER
+
+  *********************************/
+  function gameOver() {
+    $("#frame").append("<p>GAME OVER</p>")
+
+    $("#man").children().removeClass("hidden");
+
+    for (letter in wordObj) {
+      if ( wordObj[letter].guessed === false ) {
+        revealLetter(letter, wordObj[letter].val);
+        $("[idx='"+letter+"']").addClass("missed");
+      }
+    }
+  }
+
+
 });

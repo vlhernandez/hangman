@@ -198,3 +198,11 @@ button {
 .enabled:hover {
   background: pink;
 }
+
+.hidden {
+  visibility: hidden;
+}
+
+.missed {
+  color: red;
+}

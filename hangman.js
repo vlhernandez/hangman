@@ -43,7 +43,10 @@ $( document ).ready(function() {
 
   *********************************/
   $("button").click(function( event ) {
-     getWord();
+    resetGame();
+    getWord();
+    $(this).hide();
+    $(this).fadeOut();
   });
 
 
@@ -126,7 +129,10 @@ $( document ).ready(function() {
 
   *********************************/
   function gameOver() {
-    $("#frame").append("<p>GAME OVER</p>")
+   $("#letters").children().children().removeClass("enabled");
+   $("#letters").children().children().off();
+
+    $("#frame").append("<p id='game-over'>GAME OVER</p>")
 
     $("#man").children().removeClass("hidden");
 
@@ -136,7 +142,21 @@ $( document ).ready(function() {
         $("[idx='"+letter+"']").addClass("missed");
       }
     }
+    playagain();
   }
 
+function playagain() {
+  $("button").show();
+  $("button").html("Play Again?");
+  $("button").fadeIn();
+}
+
+function resetGame() {
+  var word = "";
+  var wordObj = {};
+  var missedCnt = 0;
+  $("#key").addClass("enabled");
+  $("#word").empty();
+}
 
 });

@@ -4,15 +4,11 @@ $( document ).ready(function() {
     var man = {
       0: "lt-leg",
       1: "rt-leg",
-      2: "body",
+      2: "torso",
       3: "lt-arm",
       4: "rt-arm",
       5: "head"
     };
-
-    getWord();
-    enableKeyboard();
-
 
     function getWord() {
       $.ajax({
@@ -22,31 +18,54 @@ $( document ).ready(function() {
         dataType: "json",
 
        success: function(data) {
-         console.log("Got Word:", data.word);
           setupGame(data.word);
+          getDefinition(data.word);
         },
 
-      error: function(err) {alert(err);}
+      error: function(err) {alert('There was an error fetching the word: ', err);}
       })
+    }
+
+
+    function getDefinition(word) {
+      $.ajax({
+        url:"http://api.wordnik.com:80/v4/word.json/"+word+"/definitions?limit=200&includeRelated=false&sourceDictionaries=all&useCanonical=false&includeTags=false&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5",
+        type: "GET",
+        data: {},
+        dataType: "json",
+
+       success: function(data) {
+         storeDefinition(data[0].partOfSpeech, data[0].text)
+        },
+
+      error: function(err) {alert('There was an error getting the definition: ', err);}
+      })
+
     }
 
 
     function setupGame(word) {
       var patt = /[a-zA-Z]/;
+      wordObj.info = {word: word};
       word = word.toLowerCase().split("")
 
       word.forEach(function(val, indx) {
-        $("#word").append("<div idx="+indx+" class=letter></div>");
         if ( patt.test(val) ) {
+        $(".word").append("<div idx="+indx+" class='letter'></div>");
           wordObj[indx] = {val, guessed: false};
         }
         else {
+        $(".word").append("<div idx="+indx+" class='letter symbol'></div>");
           wordObj[indx] = {val, guessed: true};
           revealLetter(indx, val);
         }
       });
     }
 
+
+    function storeDefinition(partOfSpeech, definition) {
+      wordObj.info= { partOfSpeech: partOfSpeech, definition: definition };
+    }
 
     function enableKeyboard() {
       $(".key").removeClass("disabled");
@@ -113,21 +132,22 @@ $( document ).ready(function() {
       var showPart = man[missedCnt];
 
       if ( missedCnt === 6 ) {
-        console.log("game over")
+        updateScore();
         gameOver();
         return;
       }
 
-      $("#"+showPart).removeClass("hidden");
+      $("."+showPart).removeClass("hidden");
 
       missedCnt++;
+      updateScore();
     }
 
 
     function gameOver(winner) {
       // turn off game keyboard
-      $("#letters").children().children().removeClass("enabled");
-      $("#letters").children().children().off();
+      $(".keyboard").children().children().removeClass("enabled");
+      $(".keyboard").children().children().off();
       $(".overlay").toggle();
       $(".play-again").toggle();
 
@@ -137,7 +157,7 @@ $( document ).ready(function() {
       }
       else {
         $(".loser").toggle();
-        $("#man").children().removeClass("hidden");
+        $(".man").children().removeClass("hidden");
 
         for (letter in wordObj) {
           if ( wordObj[letter].guessed === false ) {
@@ -147,26 +167,45 @@ $( document ).ready(function() {
         }
       }
 
-      wannaPlayAgain();
     }
-
-
-    function wannaPlayAgain() {
-      $("button").toggle();
-    }
-
 
 
     function resetGame() {
       wordObj = {};
       missedCnt = 0;
 
-      $("#word").empty();
-      $("#man").children().addClass("hidden");
+      $(".word").empty();
+      $(".man").children().addClass("hidden");
       $(".overlay").toggle();
       $(".play-again").toggle();
       $(".winner").hide();
       $(".loser").hide();
+      resetHint();
+      getWord();
+      enableKeyboard();
+      updateScore();
+    }
+
+
+    function revealHint() {
+      $(".hint").off("click");
+      $(".partOfSpeech").text("Part of speech:  "+wordObj.info.partOfSpeech);
+      $(".definition").text("Defintion:  "+wordObj.info.definition);
+      $(".hint-text").text("");
+      revealBodyPart();
+    }
+
+
+    function resetHint() {
+      $(".partOfSpeech").text("");
+      $(".definition").text("");
+      $(".hint-text").text("Trade a turn for a hint");
+      $(".hint").on("click", revealHint);
+    }
+
+
+    function updateScore() {
+      $(".score").text(missedCnt+"/7")
     }
 
 
@@ -175,14 +214,16 @@ $( document ).ready(function() {
       SET UP LISTENERS
 
     *********************************/
-    $(".hint").click(function( event ) {
-      $(".hint").css("visibility", "hidden");
-    });
+    $(".play-again").click(resetGame);
 
-    $(".play-again").click(function( event  ) {
-      resetGame();
-      getWord();
-      enableKeyboard();
-    })
 
+
+    /********************************
+
+      START THE GAME!!
+
+    *********************************/
+    getWord();
+    enableKeyboard();
+    resetHint();
 });

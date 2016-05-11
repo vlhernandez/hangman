@@ -1,19 +1,27 @@
+/************************************************
+
+   GENERAL
+
+************************************************/
+
 html {
   min-height: 100%;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
   font-size: 1em;
 }
 
+button {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 200;
+  cursor: pointer;
+}
+
 body {
   min-height: 100%;
   position: relative;
-}
-
-#wrapper {
-  background: #EAEDEE;
 }
 
 h1 {
@@ -22,18 +30,26 @@ h1 {
   font-family: 'Cabin Sketch', sans-serif;
   font-size: 6em;
   font-weight: 700;
+  color: #CD5C5C;
 }
 
 img {
   max-width: 100%;
 }
 
-#word {
+
+
+.wrapper {
+  background: #EAEDEE;
+}
+
+
+.word {
   display: flex;
   justify-content: center;
 }
 
-#game-wrapper {
+.game-wrapper {
   display: flex;
   align-items: flex-end;
   justify-content: space-around;
@@ -42,13 +58,35 @@ img {
   max-width: 90%;
   padding: 6em 6em 3em;
   box-sizing: border-box;
-}
-
-#frame {
+  border-radius: 5px;
   position: relative;
 }
 
-#top-bar {
+.score {
+  color: #CD5C5C;
+  position: absolute;
+  bottom: 0;
+  right:0;
+  font-size: .75em;
+  margin: 1em;
+}
+
+
+
+/************************************************
+
+    THE GALLOWS AND THE PRISONER
+
+************************************************/
+.hidden {
+  visibility: hidden;
+}
+
+.frame {
+  position: relative;
+}
+
+.top-bar {
   width: 100%;
   height: 4px;
   background: black;
@@ -57,7 +95,7 @@ img {
   top: 0;
 }
 
-#noose {
+.noose {
   width: 4px;
   height: 20px;
   background: black;
@@ -66,7 +104,7 @@ img {
   right: 0;
 }
 
-#pole {
+.pole {
   width: 4px;
   height: 98%;
   background: black;
@@ -75,7 +113,7 @@ img {
   left: 0;
 }
 
-#base {
+.base {
   width: 100px;
   height: 4px;
   background: black;
@@ -84,29 +122,167 @@ img {
   bottom: 0;
 }
 
+.man {  /* BOX TO HOLD THE PRISONER */
+   position: relative;
+   height: 200px;
+   width: 100px;
+   left: 46px;
+   top: 20px;
+}
+
+.head {
+  border-radius: 100%;
+  border: solid 4px black;
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  left: 28px;
+}
+
+.lt-eye1 {
+  width: 2px;
+  background: red;
+  height: 10px;
+  transform: rotate(37deg);
+  position: absolute;
+  top: 15px;
+  left: 45px;
+}
+
+.lt-eye2 {
+  width: 2px;
+  background: red;
+  height: 10px;
+  transform: rotate(-50deg);
+  position: absolute;
+  top: 15px;
+  left: 45px;
+}
+
+.rt-eye1 {
+  width: 2px;
+  background: red;
+  height: 10px;
+  transform: rotate(25deg);
+  position: absolute;
+  top: 13px;
+  left: 60px;
+}
+
+.rt-eye2 {
+  width: 2px;
+  background: red;
+  height: 10px;
+  transform: rotate(-60deg);
+  position: absolute;
+  top: 13px;
+  left: 60px;
+}
+
+.torso {
+  height: 75px;
+  width: 4px;
+  background: black;
+  position: absolute;
+  left: 50px;
+  top: 44px;
+}
+
+.lt-arm {
+    width: 4px;
+    height: 45px;
+    background: black;
+    transform: rotate(-60deg);
+    position: absolute;
+    left: 30px;
+    top: 30px;
+}
+
+.rt-arm {
+    width: 4px;
+    height: 45px;
+    background: black;
+    transform: rotate(55deg);
+    position: absolute;
+    left: 67px;
+    top: 30px;
+}
+
+.lt-leg {
+    width: 4px;
+    height: 45px;
+    background: black;
+    transform: rotate(30deg);
+    position: absolute;
+    left: 39px;
+    top: 110px
+}
+
+.rt-leg {
+    width: 4px;
+    height: 45px;
+    background: black;
+    transform: rotate(-30deg);
+    position: absolute;
+    right: 35px;
+    top: 110px
+}
+
+/************************************************
+
+    WORD
+
+************************************************/
 .letter {
   margin: .5em;
   border-bottom: #CD5C5C solid 2px;
-  box-sizing: border-box;
   width: 1.5em;
   text-align: center;
 }
 
+.symbol {  /* don't display a blank for symbols */
+  border-bottom: none;
+}
 
-.hint {
-  background: #CD5C5C;
-  border-radius: 5px;
-  border: none;
-  padding: 1em;
-  margin-top: 2em;
-  /*width: 100%;*/
-  /*height: 13px;*/
-  visibility: visible;
-  font-size: .75em;
+.missed {
+  color: red;
 }
 
 
-#letters {
+
+/************************************************
+
+    HINT
+
+************************************************/
+.hint {
+  background: #CD5C5C; /* fallback background*/
+  background: rgba(205,92,92,.9);
+  border-radius: 5px;
+  border: none;
+  padding: 1em 4em;
+  margin-top: 2em;
+  width: 100%;
+  /*height: 13px;*/
+  visibility: visible;
+  font-size: .9em;
+  color: white;
+  letter-spacing: .0625em;
+}
+
+.partOfSpeech,
+.definition {
+  text-align: left;
+}
+
+
+
+/************************************************
+
+    KEYBOARD
+
+************************************************/
+.keyboard {
   display: flex;
   flex-direction: column;
 }
@@ -119,134 +295,21 @@ img {
   justify-content: center;
 }
 
-.row1 p,
-.row2 p,
-.row3 p {
+.key {
   padding: 1em;
   margin-right: .5em;
   text-align: center;
   background: white;
   border-radius: 4px;
+  color: #CD5C5C;
 }
-
-#man {
-   position: relative;
-   height: 200px;
-   width: 100px;
-   left: 46px;
-   top: 20px;
-}
-
-#head {
-  border-radius: 100%;
-  border: solid 4px black;
-  height: 40px;
-  width: 40px;
-  position: absolute;
-  left: 28px;
-}
-
-#lt-eye1 {
-  width: 2px;
-  background: red;
-  height: 10px;
-  transform: rotate(37deg);
-  position: absolute;
-  top: 15px;
-  left: 45px;
-}
-
-#lt-eye2 {
-  width: 2px;
-  background: red;
-  height: 10px;
-  transform: rotate(-50deg);
-  position: absolute;
-  top: 15px;
-  left: 45px;
-}
-
-#rt-eye1 {
-  width: 2px;
-  background: red;
-  height: 10px;
-  transform: rotate(25deg);
-  position: absolute;
-  top: 13px;
-  left: 60px;
-}
-
-#rt-eye2 {
-  width: 2px;
-  background: red;
-  height: 10px;
-  transform: rotate(-60deg);
-  position: absolute;
-  top: 13px;
-  left: 60px;
-}
-
-#body {
-  height: 75px;
-  width: 4px;
-  background: black;
-  position: absolute;
-  left: 50px;
-  top: 44px;
-}
-
-#lt-arm {
-    width: 4px;
-    height: 45px;
-    background: black;
-    transform: rotate(-60deg);
-    position: absolute;
-    left: 30px;
-    top: 30px;
-}
-
-#rt-arm {
-    width: 4px;
-    height: 45px;
-    background: black;
-    transform: rotate(55deg);
-    position: absolute;
-    left: 67px;
-    top: 30px;
-}
-
-#lt-leg {
-    width: 4px;
-    height: 45px;
-    background: black;
-    transform: rotate(30deg);
-    position: absolute;
-    left: 39px;
-    top: 110px
-}
-
-#rt-leg {
-    width: 4px;
-    height: 45px;
-    background: black;
-    transform: rotate(-30deg);
-    position: absolute;
-    right: 35px;
-    top: 110px
-}
-
 
 .enabled:hover {
-  background: rgba(205, 92, 92, 0.7);
+  background: rgb(205, 92, 92); /*fallback*/
+  background: rgba(205, 92, 92, 0.8);
+  color: white;
 }
 
-.hidden {
-  visibility: hidden;
-}
-
-.missed {
-  color: red;
-}
 
 .enabled {
   opacity: 1;
@@ -256,6 +319,12 @@ img {
   opacity: 0.25;
 }
 
+
+/************************************************
+
+   GAME OVER
+
+************************************************/
 .overlay {
   position: absolute;
   top: 0;
@@ -263,11 +332,13 @@ img {
   width: 100%;
   height: 100%;
   z-index: 10;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.3); /* don't use background fallback, don't want to hide the result */
   display: none;
-
+  border-radius: 5px;
 }
+
 .play-again{
+  cursor: pointer;
   text-align: center;
   position: absolute;
   top: 28%;
@@ -279,9 +350,10 @@ img {
   display: none;
   color: white;
   padding: 2em;
-  border-radius: 5px;
-  width: 245px;
+  width: 260px;
   height: 90px;
+  letter-spacing: .0625em;
+
 }
 
 .winner, .loser {

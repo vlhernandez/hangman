@@ -2,13 +2,14 @@
 <html>
   <head>
     <meta charset="utf-8"/>
-    <link href="styles.css" rel="stylesheet" type="text/css" />
-    <link href='https://fonts.googleapis.com/css?family=Martel+Sans:700,600|Cabin+Sketch:400,700|Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <link href="css/normalize.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.css" rel="stylesheet" type="text/css" />
+    <link href='https://fonts.googleapis.com/css?family=Cabin+Sketch:700|Open+Sans:200,400,3000' rel='stylesheet' type='text/css'>
     <title>Hangman Game</title>
   </head>
 
   <body>
-  <div id="wrapper">
+  <div class="wrapper">
 
     <h1>Hangman</h1>
     <div class="overlay"></div>
@@ -17,30 +18,31 @@
       <p class="loser">GAME OVER</p>
       Play Again?
     </div>
-    <div id="game-wrapper">
-      <div id="word"></div>
-      <div id="frame">
-        <div id="top-bar"></div>
-        <div id="noose"></div>
-        <div id="pole"></div>
-        <div id="base"></div>
+    <div class="game-wrapper">
+      <div class="word"></div>
+      <div class="frame">
+        <div class="top-bar"></div>
+        <div class="noose"></div>
+        <div class="pole"></div>
+        <div class="base"></div>
 
-        <div id="man">
-          <div id="head" class="hidden"></div>
-          <div id="lt-eye1" class="hidden"></div>
-          <div id="lt-eye2" class="hidden"></div>
-          <div id="rt-eye1" class="hidden"></div>
-          <div id="rt-eye2" class="hidden"></div>
-          <div id="body" class="hidden"></div>
-          <div id="lt-arm" class="hidden"></div>
-          <div id="rt-arm" class="hidden"></div>
-          <div id="lt-leg" class="hidden"></div>
-          <div id="rt-leg" class="hidden"></div>
+        <div class="man">
+          <div class="head hidden"></div>
+          <div class="lt-eye1 hidden"></div>
+          <div class="lt-eye2 hidden"></div>
+          <div class="rt-eye1 hidden"></div>
+          <div class="rt-eye2 hidden"></div>
+          <div class="torso hidden"></div>
+          <div class="lt-arm hidden"></div>
+          <div class="rt-arm hidden"></div>
+          <div class="lt-leg hidden"></div>
+          <div class="rt-leg hidden"></div>
         </div>
       </div>
+      <div class="score"></div>
     </div>
 
-    <div id="letters">
+    <div class="keyboard">
       <div class="row1">
         <p class="key">q</p>
         <p class="key">w</p>
@@ -74,7 +76,9 @@
         <p class="key">m</p>
       </div>
       <button class="hint">
-        I need a hint
+        <p class="partOfSpeech"></p>
+        <p class="definition"></p>
+        <p class="hint-text"></p>
       </button>
     </div>
 

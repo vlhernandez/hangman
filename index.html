@@ -3,73 +3,77 @@
   <head>
     <meta charset="utf-8"/>
     <link href="styles.css" rel="stylesheet" type="text/css" />
+    <link href='https://fonts.googleapis.com/css?family=Martel+Sans:700,600|Cabin+Sketch:400,700|Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>  
     <title>Hangman Game</title>
   </head>
 
   <body>
+  <div id="wrapper">
 
     <h1>Hangman</h1>
 
-    <div id="letters">
-      <div class="row1">
-        <p class="key enabled">q</p>
-        <p class="key enabled">w</p>
-        <p class="key enabled">e</p>
-        <p class="key enabled">r</p>
-        <p class="key enabled">t</p>
-        <p class="key enabled">y</p>
-        <p class="key enabled">u</p>
-        <p class="key enabled">i</p>
-        <p class="key enabled">o</p>
-        <p class="key enabled">p</p>
-      </div>
-      <div class="row2">
-        <p class="key enabled">a</p>
-        <p class="key enabled">s</p>
-        <p class="key enabled">d</p>
-        <p class="key enabled">f</p>
-        <p class="key enabled">g</p>
-        <p class="key enabled">h</p>
-        <p class="key enabled">j</p>
-        <p class="key enabled">k</p>
-        <p class="key enabled">l</p>
-      </div>
-      <div class="row3">
-        <p class="key enabled">z</p>
-        <p class="key enabled">x</p>
-        <p class="key enabled">c</p>
-        <p class="key enabled">v</p>
-        <p class="key enabled">b</p>
-        <p class="key enabled">n</p>
-        <p class="key enabled">m</p>
-      </div>
-    </div>
-    <div id="frame">
+    <div id="game-wrapper">
+      <div id="word"></div>
+      <div id="frame">
         <div id="top-bar"></div>
         <div id="noose"></div>
         <div id="pole"></div>
         <div id="base"></div>
 
-      <div id="man">
-        <div id="head" class="hidden"></div>
-        <div id="lt-eye1" class="hidden"></div>
-        <div id="lt-eye2" class="hidden"></div>
-        <div id="rt-eye1" class="hidden"></div>
-        <div id="rt-eye2" class="hidden"></div>
-        <div id="body" class="hidden"></div>
-        <div id="lt-arm" class="hidden"></div>
-        <div id="rt-arm" class="hidden"></div>
-        <div id="lt-leg" class="hidden"></div>
-        <div id="rt-leg" class="hidden"></div>
+        <div id="man">
+          <div id="head" class="hidden"></div>
+          <div id="lt-eye1" class="hidden"></div>
+          <div id="lt-eye2" class="hidden"></div>
+          <div id="rt-eye1" class="hidden"></div>
+          <div id="rt-eye2" class="hidden"></div>
+          <div id="body" class="hidden"></div>
+          <div id="lt-arm" class="hidden"></div>
+          <div id="rt-arm" class="hidden"></div>
+          <div id="lt-leg" class="hidden"></div>
+          <div id="rt-leg" class="hidden"></div>
+        </div>
       </div>
     </div>
 
-
-    <div id="word"></div>
+    <div id="letters">
+      <div class="row1">
+        <p class="key">q</p>
+        <p class="key">w</p>
+        <p class="key">e</p>
+        <p class="key">r</p>
+        <p class="key">t</p>
+        <p class="key">y</p>
+        <p class="key">u</p>
+        <p class="key">i</p>
+        <p class="key">o</p>
+        <p class="key">p</p>
+      </div>
+      <div class="row2">
+        <p class="key">a</p>
+        <p class="key">s</p>
+        <p class="key">d</p>
+        <p class="key">f</p>
+        <p class="key">g</p>
+        <p class="key">h</p>
+        <p class="key">j</p>
+        <p class="key">k</p>
+        <p class="key">l</p>
+      </div>
+      <div class="row3">
+        <p class="key">z</p>
+        <p class="key">x</p>
+        <p class="key">c</p>
+        <p class="key">v</p>
+        <p class="key">b</p>
+        <p class="key">n</p>
+        <p class="key">m</p>
+      </div>
+    </div>
 
     <button>
-      PLAY!
+      PLAY AGAIN!
     </button>
+  </div>
 
 
     <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>

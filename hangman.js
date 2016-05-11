@@ -132,6 +132,7 @@ $( document ).ready(function() {
       var showPart = man[missedCnt];
 
       if ( missedCnt === 6 ) {
+        missedCnt++;
         updateScore();
         gameOver();
         return;

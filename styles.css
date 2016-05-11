@@ -1,4 +1,5 @@
 html {
+  min-height: 100%;
   max-width: 1200px;
   margin: 0 auto;
   font-family: 'Open Sans', sans-serif;
@@ -6,6 +7,10 @@ html {
   font-size: 1em;
 }
 
+body {
+  min-height: 100%;
+  position: relative;
+}
 
 #wrapper {
   background: #EAEDEE;
@@ -81,19 +86,23 @@ img {
 
 .letter {
   margin: .5em;
-  border-bottom: pink solid 2px;
+  border-bottom: #CD5C5C solid 2px;
   box-sizing: border-box;
   width: 1.5em;
   text-align: center;
 }
 
-button {
-  background: pink;
+
+.hint {
+  background: #CD5C5C;
   border-radius: 5px;
-  border-style: none;
+  border: none;
   padding: 1em;
-  margin-top: 4em;
-  display: none;
+  margin-top: 2em;
+  /*width: 100%;*/
+  /*height: 13px;*/
+  visibility: visible;
+  font-size: .75em;
 }
 
 
@@ -228,7 +237,7 @@ button {
 
 
 .enabled:hover {
-  background: pink;
+  background: rgba(205, 92, 92, 0.7);
 }
 
 .hidden {
@@ -247,9 +256,34 @@ button {
   opacity: 0.25;
 }
 
-.game-over {
-  background-color: lightgray;
+.overlay {
+  position: absolute;
+  top: 0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0,0,0,0.5);
+  display: none;
+
+}
+.play-again{
+  text-align: center;
+  position: absolute;
+  top: 28%;
+  left: 36%;
+  background-color: #CD5C5C;
+  border: pink solid 1px;
+  border-radius: 5px;
+  z-index: 11;
+  display: none;
+  color: white;
   padding: 2em;
   border-radius: 5px;
-  text-align: center;
+  width: 245px;
+  height: 90px;
+}
+
+.winner, .loser {
+  display: none;
 }

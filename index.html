@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8"/>
     <link href="styles.css" rel="stylesheet" type="text/css" />
-    <link href='https://fonts.googleapis.com/css?family=Martel+Sans:700,600|Cabin+Sketch:400,700|Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>  
+    <link href='https://fonts.googleapis.com/css?family=Martel+Sans:700,600|Cabin+Sketch:400,700|Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
     <title>Hangman Game</title>
   </head>
 
@@ -11,7 +11,12 @@
   <div id="wrapper">
 
     <h1>Hangman</h1>
-
+    <div class="overlay"></div>
+    <div class="play-again">
+      <p class="winner">Winner Winner Pesker Dinner!</p>
+      <p class="loser">GAME OVER</p>
+      Play Again?
+    </div>
     <div id="game-wrapper">
       <div id="word"></div>
       <div id="frame">
@@ -68,11 +73,11 @@
         <p class="key">n</p>
         <p class="key">m</p>
       </div>
+      <button class="hint">
+        I need a hint
+      </button>
     </div>
 
-    <button>
-      PLAY AGAIN!
-    </button>
   </div>
 
 

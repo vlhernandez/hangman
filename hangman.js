@@ -128,13 +128,15 @@ $( document ).ready(function() {
       // turn off game keyboard
       $("#letters").children().children().removeClass("enabled");
       $("#letters").children().children().off();
+      $(".overlay").toggle();
+      $(".play-again").toggle();
 
       if (winner) {
-        $("#game-wrapper").prepend("<div class='game-over'><p>Winner Winner </p><p>Pesker Dinner!</p></div>");
+        $(".winner").toggle();
 
       }
       else {
-        $("#game-wrapper").prepend("<div class='game-over'><p>GAME OVER</p></div>")
+        $(".loser").toggle();
         $("#man").children().removeClass("hidden");
 
         for (letter in wordObj) {
@@ -160,8 +162,11 @@ $( document ).ready(function() {
       missedCnt = 0;
 
       $("#word").empty();
-      $(".game-over").remove();
       $("#man").children().addClass("hidden");
+      $(".overlay").toggle();
+      $(".play-again").toggle();
+      $(".winner").hide();
+      $(".loser").hide();
     }
 
 
@@ -170,12 +175,14 @@ $( document ).ready(function() {
       SET UP LISTENERS
 
     *********************************/
-    $("button").click(function( event ) {
+    $(".hint").click(function( event ) {
+      $(".hint").css("visibility", "hidden");
+    });
+
+    $(".play-again").click(function( event  ) {
       resetGame();
       getWord();
       enableKeyboard();
-      $(this).toggle();
-    });
-
+    })
 
 });
